@@ -1,9 +1,14 @@
-media: static/uploads
+media:
+  input: static/uploads
+  output: /uploads
+  rename: safe
+
 content:
   - name: people
     label: People
     type: collection
     path: content/people
+    filename: "{title}.md"
     exclude: ["_index.md"]
     fields:
       - { name: title, label: Name, type: string, required: true }
