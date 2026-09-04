@@ -1,8 +1,7 @@
 ---
-title: Jane Doe
+title: AAAA BBB person
 role: Senior Lecturer
-blurb: Works on acoustics in shared civic buildings.
+blurb: little blurb1234136545673567
 photo: /uploads/placeholder.jpg
 ---
-
-Full bio for Jane goes here. Same file drives both the card and this page.
+Full bio for Jane goes here.12341234524653456
