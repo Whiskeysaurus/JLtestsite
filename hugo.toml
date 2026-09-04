@@ -1,0 +1,6 @@
+baseURL = "/"
+locale = "en-us"
+title = "JLTest"
+
+# No tags/categories in this site - silences the taxonomy layout warning
+disableKinds = ["taxonomy", "term"]

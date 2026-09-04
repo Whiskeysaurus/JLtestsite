@@ -1,0 +1,9 @@
+{{ define "main" }}
+<article class="person">
+  {{ with .Params.photo }}<img src="{{ . }}" alt="">{{ end }}
+  <h1>{{ .Title }}</h1>
+  <p class="role">{{ .Params.role }}</p>
+  {{ .Content }}
+  <p><a href="/people/">&larr; Back</a></p>
+</article>
+{{ end }}

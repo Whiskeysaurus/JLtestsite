@@ -1,0 +1,13 @@
+media: static/uploads
+content:
+  - name: people
+    label: People
+    type: collection
+    path: content/people
+    exclude: ["_index.md"]
+    fields:
+      - { name: title, label: Name, type: string, required: true }
+      - { name: role,  label: Role, type: string }
+      - { name: blurb, label: Card blurb, type: text }
+      - { name: photo, label: Photo, type: image }
+      - { name: body,  label: Full bio, type: rich-text }

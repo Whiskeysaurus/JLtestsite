@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ .Title }} | {{ .Site.Title }}</title>
+</head>
+<body>
+<header><a href="/">{{ .Site.Title }}</a> &middot; <a href="/people/">People</a></header>
+<main>{{ block "main" . }}{{ end }}</main>
+<footer>JLTest</footer>
+</body>
+</html>
