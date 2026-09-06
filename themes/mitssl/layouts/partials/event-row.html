@@ -1,0 +1,24 @@
+{{- /* One event: full-width image, then name + year on the left,
+       date, location and blurb on the right. */ -}}
+<article class="event">
+	{{ with .Params.featureImage }}
+		<div class="event-media">
+			{{ partial "media.html" (dict "path" . "alt" $.Title "width" 1400) }}
+		</div>
+	{{ end }}
+	<div class="columns columns--halves">
+		<div>
+			<h3 class="event-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+			<div>{{ .Date.Format "2006" }}</div>
+		</div>
+		<div>
+			<div class="event-meta">
+				{{ .Date.Format "2 January 2006" }}<br>
+				{{ with .Params.location }}{{ . }}{{ end }}
+			</div>
+			{{ with .Params.summary }}
+				<div class="event-blurb">{{ . }}</div>
+			{{ end }}
+		</div>
+	</div>
+</article>

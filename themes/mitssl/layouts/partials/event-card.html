@@ -1,0 +1,16 @@
+{{- /* One event in the multi-column list: image, name, date, location, blurb. */ -}}
+<article class="event-card">
+	{{ with .Params.featureImage }}
+		<div class="event-media">
+			{{ partial "media.html" (dict "path" . "alt" $.Title "width" 800) }}
+		</div>
+	{{ end }}
+	<h3 class="event-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+	<div class="event-meta">
+		{{ .Date.Format "2 January 2006" }}
+		{{ with .Params.location }}<br>{{ . }}{{ end }}
+	</div>
+	{{ with .Params.summary }}
+		<div class="event-blurb">{{ . }}</div>
+	{{ end }}
+</article>

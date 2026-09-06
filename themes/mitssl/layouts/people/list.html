@@ -1,0 +1,15 @@
+{{- /* People now live in a section on the front page. This page is kept
+       only so older links to /people/ still land somewhere. */ -}}
+{{- $dest := "/#people" | relURL -}}
+<!DOCTYPE html>
+<html lang="{{ .Site.Language.Locale | default "en" }}">
+<head>
+	<meta charset="utf-8">
+	<title>{{ .Title }} — {{ .Site.Title }}</title>
+	<link rel="canonical" href="{{ "/" | absURL }}">
+	<meta http-equiv="refresh" content="0; url={{ $dest }}">
+</head>
+<body>
+	<a href="{{ $dest }}">{{ .Title }}</a>
+</body>
+</html>

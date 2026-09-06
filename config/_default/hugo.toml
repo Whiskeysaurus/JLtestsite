@@ -1,13 +1,13 @@
 baseURL = "/"
-theme = "blowfish"
-title = "JLTest"
+theme = "mitssl"
+title = "MIT Spatial Sound Lab"
 defaultContentLanguage = "en"
 
 enableRobotsTXT = true
 enableEmoji = true
 summaryLength = 0
 buildDrafts = false
-buildFuture = false
+buildFuture = true
 
 # No tags or categories on this site
 disableKinds = ["taxonomy", "term"]
@@ -19,4 +19,4 @@ disableKinds = ["taxonomy", "term"]
   anchor = "Center"
 
 [outputs]
-  home = ["HTML", "RSS", "JSON"]
+  home = ["HTML", "RSS"]

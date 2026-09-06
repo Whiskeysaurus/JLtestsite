@@ -1,0 +1,4 @@
+name = "MITSSL"
+license = "MIT"
+description = "Single-column layout with corner navigation, built to the approved MIT SSL design."
+min_version = "0.146.0"

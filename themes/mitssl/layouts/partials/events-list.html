@@ -1,0 +1,6 @@
+{{- $events := where .Site.RegularPages "Section" "events" -}}
+<div class="events-grid">
+	{{- range $events.ByDate.Reverse }}
+		{{ partial "event-card.html" . }}
+	{{- end }}
+</div>

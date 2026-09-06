@@ -1,0 +1,37 @@
+{{- /* Renders an image from assets/, e.g. featureImage: uploads/foo.jpg
+       dict: path (string), alt (string), width (int px), square (bool)
+       SVGs pass straight through — they have no pixel dimensions to resize. */ -}}
+{{- $path := .path -}}
+{{- $alt := .alt | default "" -}}
+{{- $width := .width | default 1200 -}}
+{{- $square := .square | default false -}}
+{{- with $path -}}
+	{{- $img := resources.Get . -}}
+	{{- if not $img -}}
+		{{- $img = resources.Get (printf "uploads/%s" (path.Base .)) -}}
+	{{- end -}}
+	{{- with $img -}}
+		{{- if eq .MediaType.SubType "svg" -}}
+			{{- /* Lift width and height off the viewBox so the browser reserves
+			       the right space before the file loads — without it every
+			       anchor below the logo lands in the wrong place. */ -}}
+			{{- $box := index (findRESubmatch `viewBox="([^"]+)"` .Content 1) 0 -}}
+			{{- $dims := "" -}}
+			{{- with $box -}}
+				{{- $parts := split (index . 1) " " -}}
+				{{- if eq (len $parts) 4 -}}
+					{{- $dims = printf ` width="%.0f" height="%.0f"` (float (index $parts 2)) (float (index $parts 3)) -}}
+				{{- end -}}
+			{{- end -}}
+			<img src="{{ .RelPermalink }}"{{ $dims | safeHTMLAttr }} alt="{{ $alt }}" loading="lazy">
+		{{- else -}}
+			{{- $out := . -}}
+			{{- if $square -}}
+				{{- $out = .Fill (printf "%dx%d Center q82 webp" $width $width) -}}
+			{{- else if gt .Width $width -}}
+				{{- $out = .Resize (printf "%dx q82 webp" $width) -}}
+			{{- end -}}
+			<img src="{{ $out.RelPermalink }}" width="{{ $out.Width }}" height="{{ $out.Height }}" alt="{{ $alt }}" loading="lazy">
+		{{- end -}}
+	{{- end -}}
+{{- end -}}

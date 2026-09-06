@@ -1,0 +1,28 @@
+{{ define "main" }}
+	<article class="entry">
+		<h1 class="entry-title">{{ .Title }}</h1>
+
+		<div class="entry-meta">
+			{{ if eq .Section "events" }}
+				{{ .Date.Format "2 January 2006" }}
+				{{ with .Params.location }}<br>{{ . }}{{ end }}
+			{{ else }}
+				{{ with .Params.role }}{{ . }}{{ end }}
+			{{ end }}
+		</div>
+
+		{{ with .Params.featureImage }}
+			<div class="entry-media">
+				{{ partial "media.html" (dict "path" . "alt" $.Title "width" 1400) }}
+			</div>
+		{{ end }}
+
+		<div class="entry-body">
+			{{ .Content }}
+		</div>
+
+		<div class="section-action">
+			<a class="button" href="{{ if eq .Section "events" }}{{ "/events/" | relURL }}{{ else }}{{ "/#people" | relURL }}{{ end }}">← BACK</a>
+		</div>
+	</article>
+{{ end }}

@@ -1,0 +1,14 @@
+[params]
+  headline = ["MIT SPATIAL", "SOUND LAB"]
+  tagline = []
+  homeImage = ""
+
+  [params.corners]
+    topLeft = "HOME"
+    topLeftUrl = "/"
+    topRight = "ABOUT"
+    topRightUrl = "/#about"
+    bottomLeft = "EVENTS"
+    bottomLeftUrl = "/#events"
+    bottomRight = "PEOPLE"
+    bottomRightUrl = "/#people"

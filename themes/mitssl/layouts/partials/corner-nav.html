@@ -1,0 +1,5 @@
+{{- $nav := .Site.Params.corners -}}
+<a class="corner corner--tl" href="{{ (or $nav.topLeftUrl "/") | relURL }}">{{ or $nav.topLeft "HOME" }}</a>
+<a class="corner corner--tr" href="{{ (or $nav.topRightUrl "/#information") | relURL }}">{{ or $nav.topRight "ABOUT" }}</a>
+<a class="corner corner--bl" href="{{ (or $nav.bottomLeftUrl "/#events") | relURL }}">{{ or $nav.bottomLeft "EVENTS" }}</a>
+<a class="corner corner--br" href="{{ (or $nav.bottomRightUrl "/people/") | relURL }}">{{ or $nav.bottomRight "PEOPLE" }}</a>

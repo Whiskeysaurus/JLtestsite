@@ -1,0 +1,19 @@
+{{- $about := .Site.GetPage "/about" -}}
+{{- with $about }}
+	<div class="columns">
+		<div class="col-5">
+			<div class="muted">{{ .Content }}</div>
+		</div>
+		<div class="col-1"></div>
+		<div class="col-6">
+			<div class="entry-meta">
+				{{ range .Params.address }}{{ . }}<br>{{ end }}
+			</div>
+			{{ with .Params.contactUrl }}
+				<a class="button" href="{{ . }}">{{ or $about.Params.contactLabel "CONTACT" }}</a>
+			{{ else }}
+				<span class="button">{{ or .Params.contactLabel "CONTACT" }}</span>
+			{{ end }}
+		</div>
+	</div>
+{{- end }}

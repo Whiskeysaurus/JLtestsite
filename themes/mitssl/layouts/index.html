@@ -1,0 +1,33 @@
+{{ define "main" }}
+	<section class="section section--home" id="home">
+		<h1 data-fit="1">{{ range $i, $line := .Site.Params.headline }}{{ if $i }}<br>{{ end }}{{ $line }}{{ end }}</h1>
+
+		{{ with .Site.Params.tagline }}
+			<h2 class="subhead" data-fit="1">{{ range $i, $line := . }}{{ if $i }}<br>{{ end }}{{ $line }}{{ end }}</h2>
+		{{ end }}
+
+		{{ with .Site.Params.homeImage }}
+			<div class="home-image">
+				{{ partial "media.html" (dict "path" . "alt" $.Site.Title "width" 900) }}
+			</div>
+		{{ end }}
+	</section>
+
+	<section class="section" id="about">
+		<div class="section-label">{{ with .Site.GetPage "/about" }}{{ .Title }}{{ end }}</div>
+		{{ partial "about.html" . }}
+	</section>
+
+	<section class="section" id="events">
+		<div class="section-label">Events</div>
+		{{ partial "featured-event.html" . }}
+		<div class="section-action">
+			<a class="button" href="{{ "/events/" | relURL }}">ALL EVENTS</a>
+		</div>
+	</section>
+
+	<section class="section" id="people">
+		<div class="section-label">People</div>
+		{{ partial "people-grid.html" . }}
+	</section>
+{{ end }}

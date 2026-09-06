@@ -1,0 +1,65 @@
+# Blowfish theme options. Full reference: https://blowfish.page/docs/configuration/
+
+colorScheme = "blowfish"
+defaultAppearance = "light"
+autoSwitchAppearance = true
+
+enableSearch = true
+enableCodeCopy = false
+
+# Only events feed the "recent" block on the homepage
+mainSections = ["events"]
+
+disableImageOptimization = false
+hotlinkFeatureImage = false
+thumbnailAspectRatio = "1.5"
+
+fingerprintAlgorithm = "sha512"
+
+[header]
+  layout = "fixed-fill-blur"
+
+[footer]
+  showMenu = true
+  showCopyright = true
+  showThemeAttribution = false
+  showAppearanceSwitcher = true
+  showScrollToTop = true
+
+[homepage]
+  layout = "hero"
+  homepageImage = "uploads/hero.jpg"
+  showRecent = true
+  showRecentItems = 1
+  showMoreLink = true
+  showMoreLinkDest = "/events/"
+  cardView = true
+  disableHeroImageFilter = true
+
+[article]
+  showDate = true
+  showDateUpdated = false
+  showAuthor = false
+  showHero = true
+  heroStyle = "big"
+  showBreadcrumbs = true
+  showDraftLabel = true
+  showPagination = false
+  showReadingTime = false
+  showTableOfContents = false
+  showTaxonomies = false
+  showWordCount = false
+  showHeadingAnchors = true
+
+[list]
+  showHero = false
+  showBreadcrumbs = false
+  showSummary = true
+  showCards = true
+  cardView = true
+  groupByYear = false
+  constrainItemsWidth = false
+  featureImageHover = true
+
+[sitemap]
+  excludedKinds = ["taxonomy", "term"]

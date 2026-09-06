@@ -2,12 +2,12 @@ disabled = false
 locale = "en"
 label = "English"
 weight = 1
-title = "JLTest"
+title = "MIT Spatial Sound Lab"
 
 [params]
   displayName = "EN"
   isoCode = "en"
   rtl = false
   dateFormat = "2 January 2006"
-  description = "Events and people."
-  copyright = "JLTest"
+  description = "A community studio for researching the social possibilities of immersive audio for public performance."
+  copyright = "MIT Spatial Sound Lab"

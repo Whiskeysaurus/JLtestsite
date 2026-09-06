@@ -1,0 +1,36 @@
+{{/* Homepage event block (site override of Blowfish default).
+     Shows the NEXT upcoming event ("Next Event"); if none are dated today or
+     later, falls back to the MOST RECENT past event ("Most Recent"). */}}
+{{ if .Site.Params.homepage.showRecent | default false }}
+  {{ $events := where .Site.RegularPages "Type" "in" .Site.Params.mainSections }}
+  {{ $today := now.Format "2006-01-02" | time.AsTime }}
+  {{ $upcoming := sort (where $events "Date" ">=" $today) "Date" "asc" }}
+  {{ $past := sort (where $events "Date" "lt" $today) "Date" "desc" }}
+
+  {{ $heading := "" }}
+  {{ $item := "" }}
+  {{ if $upcoming }}
+    {{ $heading = "Next Event" }}
+    {{ $item = index $upcoming 0 }}
+  {{ else if $past }}
+    {{ $heading = "Most Recent" }}
+    {{ $item = index $past 0 }}
+  {{ end }}
+
+  {{ with $item }}
+    <h2 class="mt-8 text-2xl font-extrabold mb-10">{{ $heading }}</h2>
+    <section class="w-full">
+      {{ partial "article-link/card.html" . }}
+    </section>
+    {{ if .Site.Params.homepage.showMoreLink | default false }}
+      <div class="mt-10 flex justify-center">
+        <a href="{{ .Site.Params.homepage.showMoreLinkDest | default "/events/" | relLangURL }}">
+          <button
+            class="bg-transparent hover:text-primary-500 prose dark:prose-invert font-semibold py-2 px-4 border border-primary-500 hover:border-transparent rounded">
+            {{ i18n "recent.show_more" | markdownify }}
+          </button>
+        </a>
+      </div>
+    {{ end }}
+  {{ end }}
+{{ end }}

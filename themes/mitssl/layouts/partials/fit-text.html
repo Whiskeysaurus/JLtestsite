@@ -1,0 +1,49 @@
+<script>
+/* Scales any [data-fit] element so its widest line fills the column,
+   the same behaviour the Cargo design relies on for the two big
+   opening lines. Falls back to the CSS size when JS is unavailable. */
+(function () {
+	var range = document.createRange();
+
+	function widestLine(el) {
+		var walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null);
+		var widest = 0;
+		var node;
+		while ((node = walker.nextNode())) {
+			if (!node.nodeValue.trim()) continue;
+			range.selectNodeContents(node);
+			var w = range.getBoundingClientRect().width;
+			if (w > widest) widest = w;
+		}
+		return widest;
+	}
+
+	function fit(el) {
+		var parent = el.parentElement;
+		if (!parent) return;
+		var available = parent.clientWidth;
+		if (!available) return;
+
+		/* Measure unwrapped, or every line just reports the column width. */
+		el.style.whiteSpace = "nowrap";
+		el.style.fontSize = "100px";
+		var widest = widestLine(el);
+		el.style.whiteSpace = "";
+		if (!widest) return;
+
+		var scale = parseFloat(el.getAttribute("data-fit")) || 1;
+		el.style.fontSize = (100 * (available / widest) * scale * 0.998) + "px";
+	}
+
+	function fitAll() {
+		var els = document.querySelectorAll("[data-fit]");
+		for (var i = 0; i < els.length; i++) fit(els[i]);
+	}
+
+	if (document.fonts && document.fonts.ready) {
+		document.fonts.ready.then(fitAll);
+	}
+	fitAll();
+	window.addEventListener("resize", fitAll);
+})();
+</script>

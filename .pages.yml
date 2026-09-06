@@ -37,3 +37,14 @@ content:
       - { name: summary,      label: Card blurb,   type: text,   description: "One or two lines. Shown on the people list." }
       - { name: featureImage, label: Photo,        type: image }
       - { name: body,         label: Full bio,     type: rich-text }
+
+  - name: about
+    label: About page
+    type: file
+    path: content/about.md
+    fields:
+      - { name: title,        label: Section heading, type: string, required: true }
+      - { name: address,      label: Address lines,   type: string, list: true, description: "One line per entry. Shown to the right of the about text." }
+      - { name: contactLabel, label: Contact button text, type: string }
+      - { name: contactUrl,   label: Contact button link, type: string, description: "Where the CONTACT button goes, e.g. mailto:someone@mit.edu. Leave empty and the button is shown but not clickable." }
+      - { name: body,         label: About text,      type: rich-text }

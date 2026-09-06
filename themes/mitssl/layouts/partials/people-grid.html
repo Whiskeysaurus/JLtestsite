@@ -1,0 +1,14 @@
+{{- $people := where .Site.RegularPages "Section" "people" -}}
+<div class="people-grid">
+	{{- range $people.ByWeight }}
+		<a class="person" href="{{ .RelPermalink }}">
+			{{ with .Params.featureImage }}
+				<div class="person-photo">
+					{{ partial "media.html" (dict "path" . "alt" $.Title "width" 600 "square" true) }}
+				</div>
+			{{ end }}
+			<div class="person-name">{{ .Title }}</div>
+			{{ with .Params.role }}<div class="person-role">{{ . }}</div>{{ end }}
+		</a>
+	{{- end }}
+</div>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language.Locale | default "en" }}">
+<head>
+	{{ partial "head.html" . }}
+</head>
+<body>
+	{{ partial "corner-nav.html" . }}
+
+	<div class="page">
+		<div class="page-layout">
+			<div class="page-content">
+				{{ block "main" . }}{{ end }}
+			</div>
+		</div>
+	</div>
+
+	{{ partial "fit-text.html" . }}
+</body>
+</html>

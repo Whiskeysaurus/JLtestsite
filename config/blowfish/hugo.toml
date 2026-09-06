@@ -1,0 +1,7 @@
+# The old Blowfish build, kept for comparison:
+#   hugo --environment blowfish
+theme = "blowfish"
+title = "JLTest"
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
