@@ -1,0 +1,22 @@
+baseURL = "/"
+theme = "blowfish"
+title = "JLTest"
+defaultContentLanguage = "en"
+
+enableRobotsTXT = true
+enableEmoji = true
+summaryLength = 0
+buildDrafts = false
+buildFuture = false
+
+# No tags or categories on this site
+disableKinds = ["taxonomy", "term"]
+
+[pagination]
+  pagerSize = 100
+
+[imaging]
+  anchor = "Center"
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]

@@ -1,0 +1,9 @@
+[[main]]
+  name = "Events"
+  pageRef = "events"
+  weight = 10
+
+[[main]]
+  name = "People"
+  pageRef = "people"
+  weight = 20

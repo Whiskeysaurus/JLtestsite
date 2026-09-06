@@ -1,18 +1,39 @@
 media:
-  input: static/uploads
-  output: /uploads
+  input: assets/uploads
+  output: uploads
   rename: safe
 
 content:
+  - name: events
+    label: Events
+    type: collection
+    path: content/events
+    filename: "{fields.title}.md"
+    exclude: ["_index.md"]
+    view:
+      fields: [title, date, location]
+      sort: [date]
+    fields:
+      - { name: title,        label: Event name,   type: string, required: true }
+      - { name: date,         label: Date,         type: date,   required: true }
+      - { name: location,     label: Location,     type: string }
+      - { name: summary,      label: Card blurb,   type: text,   description: "One or two lines. Shown on the events list and the homepage." }
+      - { name: featureImage, label: Photo,        type: image }
+      - { name: body,         label: Full details, type: rich-text }
+
   - name: people
     label: People
     type: collection
     path: content/people
-    filename: "{title}.md"
+    filename: "{fields.title}.md"
     exclude: ["_index.md"]
+    view:
+      fields: [title, role, weight]
+      sort: [weight]
     fields:
-      - { name: title, label: Name, type: string, required: true }
-      - { name: role,  label: Role, type: string }
-      - { name: blurb, label: Card blurb, type: text }
-      - { name: photo, label: Photo, type: image }
-      - { name: body,  label: Full bio, type: rich-text }
+      - { name: title,        label: Name,         type: string, required: true }
+      - { name: role,         label: Role,         type: string }
+      - { name: weight,       label: Order on page, type: number, default: 100, description: "Lower numbers appear first." }
+      - { name: summary,      label: Card blurb,   type: text,   description: "One or two lines. Shown on the people list." }
+      - { name: featureImage, label: Photo,        type: image }
+      - { name: body,         label: Full bio,     type: rich-text }
